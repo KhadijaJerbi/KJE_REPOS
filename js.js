@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const addTaskBtn = document.getElementById('addTaskBtn');
     const todoList = document.getElementById('todoList');
 
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        renderTasks(tasks);
+    }
     // Save tasks to localStorage
     function saveTasks() {
         const tasks = Array.from(todoList.children).map(card => card.textContent.trim());
@@ -85,5 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
+    loadTasks();
 });
